@@ -1,134 +1,474 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en">
 
-        <title>Laravel</title>
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="images/favicon.ico" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        laravel: '#ef3b2d',
+                    },
+                },
+            },
+        }
+    </script>
+    <title>Tailus | school management</title>
+</head>
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}a{background-color:transparent}[hidden]{display:none}html{font-family:system-ui,-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;line-height:1.5}*,:after,:before{box-sizing:border-box;border:0 solid #e2e8f0}a{color:inherit;text-decoration:inherit}svg,video{display:block;vertical-align:middle}video{max-width:100%;height:auto}.bg-white{--bg-opacity:1;background-color:#fff;background-color:rgba(255,255,255,var(--bg-opacity))}.bg-gray-100{--bg-opacity:1;background-color:#f7fafc;background-color:rgba(247,250,252,var(--bg-opacity))}.border-gray-200{--border-opacity:1;border-color:#edf2f7;border-color:rgba(237,242,247,var(--border-opacity))}.border-t{border-top-width:1px}.flex{display:flex}.grid{display:grid}.hidden{display:none}.items-center{align-items:center}.justify-center{justify-content:center}.font-semibold{font-weight:600}.h-5{height:1.25rem}.h-8{height:2rem}.h-16{height:4rem}.text-sm{font-size:.875rem}.text-lg{font-size:1.125rem}.leading-7{line-height:1.75rem}.mx-auto{margin-left:auto;margin-right:auto}.ml-1{margin-left:.25rem}.mt-2{margin-top:.5rem}.mr-2{margin-right:.5rem}.ml-2{margin-left:.5rem}.mt-4{margin-top:1rem}.ml-4{margin-left:1rem}.mt-8{margin-top:2rem}.ml-12{margin-left:3rem}.-mt-px{margin-top:-1px}.max-w-6xl{max-width:72rem}.min-h-screen{min-height:100vh}.overflow-hidden{overflow:hidden}.p-6{padding:1.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.pt-8{padding-top:2rem}.fixed{position:fixed}.relative{position:relative}.top-0{top:0}.right-0{right:0}.shadow{box-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px 0 rgba(0,0,0,.06)}.text-center{text-align:center}.text-gray-200{--text-opacity:1;color:#edf2f7;color:rgba(237,242,247,var(--text-opacity))}.text-gray-300{--text-opacity:1;color:#e2e8f0;color:rgba(226,232,240,var(--text-opacity))}.text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.text-gray-500{--text-opacity:1;color:#a0aec0;color:rgba(160,174,192,var(--text-opacity))}.text-gray-600{--text-opacity:1;color:#718096;color:rgba(113,128,150,var(--text-opacity))}.text-gray-700{--text-opacity:1;color:#4a5568;color:rgba(74,85,104,var(--text-opacity))}.text-gray-900{--text-opacity:1;color:#1a202c;color:rgba(26,32,44,var(--text-opacity))}.underline{text-decoration:underline}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.w-5{width:1.25rem}.w-8{width:2rem}.w-auto{width:auto}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}@media (min-width:640px){.sm\:rounded-lg{border-radius:.5rem}.sm\:block{display:block}.sm\:items-center{align-items:center}.sm\:justify-start{justify-content:flex-start}.sm\:justify-between{justify-content:space-between}.sm\:h-20{height:5rem}.sm\:ml-0{margin-left:0}.sm\:px-6{padding-left:1.5rem;padding-right:1.5rem}.sm\:pt-0{padding-top:0}.sm\:text-left{text-align:left}.sm\:text-right{text-align:right}}@media (min-width:768px){.md\:border-t-0{border-top-width:0}.md\:border-l{border-left-width:1px}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1024px){.lg\:px-8{padding-left:2rem;padding-right:2rem}}@media (prefers-color-scheme:dark){.dark\:bg-gray-800{--bg-opacity:1;background-color:#2d3748;background-color:rgba(45,55,72,var(--bg-opacity))}.dark\:bg-gray-900{--bg-opacity:1;background-color:#1a202c;background-color:rgba(26,32,44,var(--bg-opacity))}.dark\:border-gray-700{--border-opacity:1;border-color:#4a5568;border-color:rgba(74,85,104,var(--border-opacity))}.dark\:text-white{--text-opacity:1;color:#fff;color:rgba(255,255,255,var(--text-opacity))}.dark\:text-gray-400{--text-opacity:1;color:#cbd5e0;color:rgba(203,213,224,var(--text-opacity))}.dark\:text-gray-500{--tw-text-opacity:1;color:#6b7280;color:rgba(107,114,128,var(--tw-text-opacity))}}
-        </style>
-
-        <style>
-            body {
-                font-family: 'Nunito', sans-serif;
-            }
-        </style>
-    </head>
-    <body class="antialiased">
-        <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
-            @if (Route::has('login'))
-                <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
-                    @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Home</a>
-                    @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                        @endif
-                    @endauth
+<body class="mb-4 bg-gray-100 dark:bg-grey-300">
+  
+        <aside
+            class="ml-[-100%] fixed z-10 top-0 pb-3 px-6 w-full flex flex-col justify-between h-screen border-r bg-white transition duration-300 md:w-4/12 lg:ml-0 lg:w-[25%] xl:w-[20%] 2xl:w-[15%]">
+            <div>
+                <div class="-mx-6 px-6 py-4">
+                    <a href="#" title="home">
+                        <img src="https://tailus.io/sources/blocks/stats-cards/preview/images/logo.svg"
+                            class="w-32" alt="tailus logo">
+                    </a>
                 </div>
-            @endif
 
-            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                <div class="flex justify-center pt-8 sm:justify-start sm:pt-0">
-                    <svg viewBox="0 0 651 192" fill="none" xmlns="http://www.w3.org/2000/svg" class="h-16 w-auto text-gray-700 sm:h-20">
-                        <g clip-path="url(#clip0)" fill="#EF3B2D">
-                            <path d="M248.032 44.676h-16.466v100.23h47.394v-14.748h-30.928V44.676zM337.091 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.431 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162-.001 2.863-.479 5.584-1.432 8.161zM463.954 87.202c-2.101-3.341-5.083-5.965-8.949-7.875-3.865-1.909-7.756-2.864-11.669-2.864-5.062 0-9.69.931-13.89 2.792-4.201 1.861-7.804 4.417-10.811 7.661-3.007 3.246-5.347 6.993-7.016 11.239-1.672 4.249-2.506 8.713-2.506 13.389 0 4.774.834 9.26 2.506 13.459 1.669 4.202 4.009 7.925 7.016 11.169 3.007 3.246 6.609 5.799 10.811 7.66 4.199 1.861 8.828 2.792 13.89 2.792 3.913 0 7.804-.955 11.669-2.863 3.866-1.908 6.849-4.533 8.949-7.875v9.021h15.607V78.182h-15.607v9.02zm-1.432 32.503c-.955 2.578-2.291 4.821-4.009 6.73-1.719 1.91-3.795 3.437-6.229 4.582-2.435 1.146-5.133 1.718-8.091 1.718-2.96 0-5.633-.572-8.019-1.718-2.387-1.146-4.438-2.672-6.156-4.582-1.719-1.909-3.032-4.152-3.938-6.73-.909-2.577-1.36-5.298-1.36-8.161 0-2.864.451-5.585 1.36-8.162.905-2.577 2.219-4.819 3.938-6.729 1.718-1.908 3.77-3.437 6.156-4.582 2.386-1.146 5.059-1.718 8.019-1.718 2.958 0 5.656.572 8.091 1.718 2.434 1.146 4.51 2.674 6.229 4.582 1.718 1.91 3.054 4.152 4.009 6.729.953 2.577 1.432 5.298 1.432 8.162 0 2.863-.479 5.584-1.432 8.161zM650.772 44.676h-15.606v100.23h15.606V44.676zM365.013 144.906h15.607V93.538h26.776V78.182h-42.383v66.724zM542.133 78.182l-19.616 51.096-19.616-51.096h-15.808l25.617 66.724h19.614l25.617-66.724h-15.808zM591.98 76.466c-19.112 0-34.239 15.706-34.239 35.079 0 21.416 14.641 35.079 36.239 35.079 12.088 0 19.806-4.622 29.234-14.688l-10.544-8.158c-.006.008-7.958 10.449-19.832 10.449-13.802 0-19.612-11.127-19.612-16.884h51.777c2.72-22.043-11.772-40.877-33.023-40.877zm-18.713 29.28c.12-1.284 1.917-16.884 18.589-16.884 16.671 0 18.697 15.598 18.813 16.884h-37.402zM184.068 43.892c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002-35.648-20.524a2.971 2.971 0 00-2.964 0l-35.647 20.522-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v38.979l-29.706 17.103V24.493a3 3 0 00-.103-.776c-.024-.088-.073-.165-.104-.25-.058-.157-.108-.316-.191-.46-.056-.097-.137-.176-.203-.265-.087-.117-.161-.242-.265-.345-.085-.086-.194-.148-.29-.223-.109-.085-.206-.182-.327-.252l-.002-.001-.002-.002L40.098 1.396a2.971 2.971 0 00-2.964 0L1.487 21.919l-.002.002-.002.001c-.121.07-.219.167-.327.252-.096.075-.205.138-.29.223-.103.103-.178.228-.265.345-.066.089-.147.169-.203.265-.083.144-.133.304-.191.46-.031.085-.08.162-.104.25-.067.249-.103.51-.103.776v122.09c0 1.063.568 2.044 1.489 2.575l71.293 41.045c.156.089.324.143.49.202.078.028.15.074.23.095a2.98 2.98 0 001.524 0c.069-.018.132-.059.2-.083.176-.061.354-.119.519-.214l71.293-41.045a2.971 2.971 0 001.489-2.575v-38.979l34.158-19.666a2.971 2.971 0 001.489-2.575V44.666a3.075 3.075 0 00-.106-.774zM74.255 143.167l-29.648-16.779 31.136-17.926.001-.001 34.164-19.669 29.674 17.084-21.772 12.428-43.555 24.863zm68.329-76.259v33.841l-12.475-7.182-17.231-9.92V49.806l12.475 7.182 17.231 9.92zm2.97-39.335l29.693 17.095-29.693 17.095-29.693-17.095 29.693-17.095zM54.06 114.089l-12.475 7.182V46.733l17.231-9.92 12.475-7.182v74.537l-17.231 9.921zM38.614 7.398l29.693 17.095-29.693 17.095L8.921 24.493 38.614 7.398zM5.938 29.632l12.475 7.182 17.231 9.92v79.676l.001.005-.001.006c0 .114.032.221.045.333.017.146.021.294.059.434l.002.007c.032.117.094.222.14.334.051.124.088.255.156.371a.036.036 0 00.004.009c.061.105.149.191.222.288.081.105.149.22.244.314l.008.01c.084.083.19.142.284.215.106.083.202.178.32.247l.013.005.011.008 34.139 19.321v34.175L5.939 144.867V29.632h-.001zm136.646 115.235l-65.352 37.625V148.31l48.399-27.628 16.953-9.677v33.862zm35.646-61.22l-29.706 17.102V66.908l17.231-9.92 12.475-7.182v33.841z"/>
-                        </g>
+                <div class="mt-8 text-center">
+                    <img src="https://tailus.io/sources/blocks/stats-cards/preview/images/second_user.webp" alt=""
+                        class="w-10 h-10 m-auto rounded-full object-cover lg:w-28 lg:h-28">
+                    <h5 class="hidden mt-4 text-xl font-semibold text-gray-600 lg:block">jeff ubayi
+                    </h5>
+                    <span class="hidden text-gray-400 lg:block">jeffubayi@gmail.com</span>
+
+                </div>
+
+                <ul class="space-y-2 tracking-wide mt-8">
+                    <li>
+                        <a href="/" aria-label="dashboard"
+                            class="relative px-4 py-3 flex items-center space-x-4 rounded-xl text-white bg-gradient-to-r from-amber-500 to-amber-300">
+                            <svg class="-ml-1 h-6 w-6" viewBox="0 0 24 24" fill="none">
+                                <path
+                                    d="M6 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2V8ZM6 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2v-1Z"
+                                    class="fill-current text-cyan-400 dark:fill-slate-600"></path>
+                                <path d="M13 8a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2V8Z"
+                                    class="fill-current text-cyan-200 group-hover:text-cyan-300"></path>
+                                <path d="M13 15a2 2 0 0 1 2-2h1a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-1Z"
+                                    class="fill-current group-hover:text-sky-300"></path>
+                            </svg>
+                            <span class="-mr-1 font-medium">Dashboard</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="/dashboard" class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path class="fill-current text-gray-300 group-hover:text-cyan-300" fill-rule="evenodd"
+                                    d="M2 6a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1H8a3 3 0 00-3 3v1.5a1.5 1.5 0 01-3 0V6z"
+                                    clip-rule="evenodd" />
+                                <path class="fill-current text-gray-600 group-hover:text-cyan-600"
+                                    d="M6 12a2 2 0 012-2h8a2 2 0 012 2v2a2 2 0 01-2 2H2h2a2 2 0 002-2v-2z" />
+                            </svg>
+                            <span class="group-hover:text-gray-700">Students</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/listing/manage"
+                            class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20"
+                                fill="currentColor">
+                                <path class="fill-current text-gray-600 group-hover:text-cyan-600" fill-rule="evenodd"
+                                    d="M2 5a2 2 0 012-2h8a2 2 0 012 2v10a2 2 0 002 2H4a2 2 0 01-2-2V5zm3 1h6v4H5V6zm6 6H5v2h6v-2z"
+                                    clip-rule="evenodd" />
+                                <path class="fill-current text-gray-300 group-hover:text-cyan-300"
+                                    d="M15 7h1a2 2 0 012 2v5.5a1.5 1.5 0 01-3 0V7z" />
+                            </svg>
+                            <span class="group-hover:text-gray-700">Manage</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <form class="px-6 -mx-6 pt-4 flex justify-between items-center border-t" method="POST" action="/logout">
+                @csrf
+                <button class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                     </svg>
-                </div>
 
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="grid grid-cols-1 md:grid-cols-2">
-                        <div class="p-6">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel.com/docs" class="underline text-gray-900 dark:text-white">Documentation</a></div>
-                            </div>
+                    <span class="group-hover:text-gray-700">Logout</span>
 
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel has wonderful, thorough documentation covering every aspect of the framework. Whether you are new to the framework or have previous experience with Laravel, we recommend reading all of the documentation from beginning to end.
-                                </div>
-                            </div>
+
+                </button>
+            </form>
+        </aside>
+        <div class="ml-auto mb-6 lg:w-[75%] xl:w-[80%] 2xl:w-[85%]">
+
+            <div class="sticky z-10 top-0 h-16 border-b bg-white lg:py-2.5">
+                <div class="px-6 flex items-center justify-between space-x-4 2xl:container">
+                    <h5 hidden class="text-2xl text-gray-600 font-medium lg:block">Dashboard</h5>
+                    <button class="w-12 h-16 -mr-2 border-r lg:hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 my-auto" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                    <div class="flex space-x-4">
+                        <!--search bar -->
+                        <div hidden class="md:block">
+                            <form action="/" class="relative flex items-center text-gray-400 focus-within:text-cyan-400">
+                                <button type="submit"
+                                    class="absolute left-4 h-6 flex items-center pr-3 border-r border-gray-300">
+                                    <svg xmlns="http://ww50w3.org/2000/svg" class="w-4 fill-current"
+                                        viewBox="0 0 35.997 36.004">
+                                        <path id="Icon_awesome-search" data-name="search"
+                                            d="M35.508,31.127l-7.01-7.01a1.686,1.686,0,0,0-1.2-.492H26.156a14.618,14.618,0,1,0-2.531,2.531V27.3a1.686,1.686,0,0,0,.492,1.2l7.01,7.01a1.681,1.681,0,0,0,2.384,0l1.99-1.99a1.7,1.7,0,0,0,.007-2.391Zm-20.883-7.5a9,9,0,1,1,9-9A8.995,8.995,0,0,1,14.625,23.625Z">
+                                        </path>
+                                    </svg>
+                                </button>
+                                <input type="search" name="tag" id="leadingIcon" placeholder="Search here"
+                                    class="w-full pl-14 pr-4 py-2.5 rounded-xl text-sm text-gray-600 outline-none border border-gray-300 focus:border-cyan-300 transition">
+                            </form>
                         </div>
 
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path d="M15 13a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laracasts.com" class="underline text-gray-900 dark:text-white">Laracasts</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laracasts offers thousands of video tutorials on Laravel, PHP, and JavaScript development. Check them out, see for yourself, and massively level up your development skills in the process.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold"><a href="https://laravel-news.com/" class="underline text-gray-900 dark:text-white">Laravel News</a></div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel News is a community driven portal and newsletter aggregating all of the latest and most important news in the Laravel ecosystem, including new package releases and tutorials.
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                            <div class="flex items-center">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="w-8 h-8 text-gray-500"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                                <div class="ml-4 text-lg leading-7 font-semibold text-gray-900 dark:text-white">Vibrant Ecosystem</div>
-                            </div>
-
-                            <div class="ml-12">
-                                <div class="mt-2 text-gray-600 dark:text-gray-400 text-sm">
-                                    Laravel's robust library of first-party tools and libraries, such as <a href="https://forge.laravel.com" class="underline">Forge</a>, <a href="https://vapor.laravel.com" class="underline">Vapor</a>, <a href="https://nova.laravel.com" class="underline">Nova</a>, and <a href="https://envoyer.io" class="underline">Envoyer</a> help you take your projects to the next level. Pair them with powerful open source libraries like <a href="https://laravel.com/docs/billing" class="underline">Cashier</a>, <a href="https://laravel.com/docs/dusk" class="underline">Dusk</a>, <a href="https://laravel.com/docs/broadcasting" class="underline">Echo</a>, <a href="https://laravel.com/docs/horizon" class="underline">Horizon</a>, <a href="https://laravel.com/docs/sanctum" class="underline">Sanctum</a>, <a href="https://laravel.com/docs/telescope" class="underline">Telescope</a>, and more.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
-                    <div class="text-center text-sm text-gray-500 sm:text-left">
-                        <div class="flex items-center">
-                            <svg fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor" class="-mt-px w-5 h-5 text-gray-400">
-                                <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                        <!--/search bar -->
+                        <button aria-label="search"
+                            class="w-10 h-10 rounded-xl border bg-gray-100 focus:bg-gray-100 active:bg-gray-200 md:hidden">
+                            <svg xmlns="http://ww50w3.org/2000/svg" class="w-4 mx-auto fill-current text-gray-600"
+                                viewBox="0 0 35.997 36.004">
+                                <path id="Icon_awesome-search" data-name="search"
+                                    d="M35.508,31.127l-7.01-7.01a1.686,1.686,0,0,0-1.2-.492H26.156a14.618,14.618,0,1,0-2.531,2.531V27.3a1.686,1.686,0,0,0,.492,1.2l7.01,7.01a1.681,1.681,0,0,0,2.384,0l1.99-1.99a1.7,1.7,0,0,0,.007-2.391Zm-20.883-7.5a9,9,0,1,1,9-9A8.995,8.995,0,0,1,14.625,23.625Z">
+                                </path>
                             </svg>
+                        </button>
 
-                            <a href="https://laravel.bigcartel.com" class="ml-1 underline">
-                                Shop
+                        <button aria-label="chat"
+                            class="w-10 h-10 rounded-xl border bg-gray-100 focus:bg-gray-100 active:bg-gray-200">
+                            <a href="/register">
+                                <svg version="1.1" class="h-5 w-5 m-auto text-gray-600" id="Layer_1"
+                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+                                    y="0px" viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;"
+                                    xml:space="preserve">
+                                    <g>
+                                        <g>
+                                            <path
+                                                d="M499.029,184.32h-51.14c-1.638-5.461-3.428-9.059-5.363-13.319l36.024-36.195c5.329-5.33,5.332-14.056,0.005-19.389
+                                           L396.586,33.31c-2.561-2.564-6.036-4.025-9.661-4.025c-3.624,0-7.098,1.431-9.66,3.995l-36.177,35.874
+                                           c-4.29-1.969-7.946-3.798-13.408-5.467V12.971C327.68,5.431,322.25,0,314.709,0H198.656c-7.541,0-14.336,5.431-14.336,12.971
+                                           V63.17c-4.096,1.694-8.77,3.555-13.222,5.576l-35.363-35.489c-5.33-5.325-13.883-5.323-19.214,0.003l-82.066,82.065
+                                           c-5.333,5.33-5.314,13.974,0.016,19.309l35.317,35.671c-2.06,4.488-3.947,8.555-5.676,14.017H14.336
+                                           C6.795,184.32,0,189.751,0,197.291v116.053c0,7.539,6.795,14.336,14.336,14.336h49.776c1.726,4.096,3.622,8.835,5.677,13.317
+                                           L34.45,376.166c-2.561,2.561-4,5.95-3.999,9.574c0.001,3.624,1.442,7.053,4.005,9.613l82.153,82.039
+                                           c5.33,5.325,13.967,5.315,19.296-0.011l35.186-35.486c4.452,2.019,9.131,3.876,13.227,5.572v50.198
+                                           c0,7.539,6.795,14.336,14.336,14.336h116.053c7.541,0,12.971-6.797,12.971-14.336v-50.717c5.461-1.67,9.122-3.514,13.413-5.485
+                                           l36.001,36.195c2.56,2.564,6.205,4.305,9.829,4.305c0.001,0,0.001,0,0.003,0c3.622,0,7.096-1.739,9.657-4.301l82.016-82.189
+                                           c2.56-2.561,3.998-6.119,3.996-9.742c-0.001-3.622-1.44-7.137-4.002-9.697l-36.058-35.714c1.931-4.253,3.718-8.544,5.355-12.64
+                                           h51.141c7.541,0,12.971-6.797,12.971-14.336V197.291C512,189.751,506.57,184.32,499.029,184.32z M484.693,300.373h-46.525
+                                           c-5.945,0-11.207,3.506-13.01,9.172c-2.986,9.384-6.78,18.396-11.278,27.124c-2.721,5.278-1.716,11.627,2.485,15.826
+                                           l33.266,33.202l-62.703,62.717l-33.067-33.12c-4.213-4.219-10.68-5.22-15.968-2.467c-8.765,4.567-18.317,8.415-27.715,11.446
+                                           c-5.64,1.819-9.804,7.066-9.804,12.992v47.429h-88.747v-46.987c0-5.964-3.529-11.238-9.22-13.025
+                                           c-9.572-3.008-18.773-6.857-27.684-11.446c-5.274-2.713-11.613-1.714-15.812,2.479l-32.696,32.696l-62.819-62.768l32.582-32.57
+                                           c4.213-4.213,5.213-10.671,2.463-15.958c-4.65-8.936-8.552-17.987-11.603-27.57c-1.804-5.665-7.063-9.172-13.008-9.172H27.307
+                                           v-88.747h46.525c5.945,0,11.207-4.187,13.01-9.854c3.053-9.591,6.959-19.157,11.612-28.097c2.75-5.282,1.757-11.825-2.453-16.039
+                                           l-32.543-32.607l62.804-62.79l32.741,32.687c4.197,4.192,10.621,5.19,15.895,2.475c8.921-4.59,17.949-8.443,27.509-11.446
+                                           c5.689-1.787,9.22-7.064,9.22-13.028V27.307h88.747V73.37c0,5.927,4.164,11.177,9.806,12.995
+                                           c9.398,3.03,18.776,6.88,27.536,11.444c5.291,2.757,11.839,1.761,16.055-2.46l33.113-33.112l62.688,62.738l-33.227,33.239
+                                           c-4.198,4.2-5.196,10.63-2.475,15.909c4.5,8.733,8.3,18.261,11.287,27.648c1.802,5.665,7.068,9.855,13.013,9.855h46.524V300.373z" />
+                                        </g>
+                                    </g>
+                                    <g>
+                                        <g>
+                                            <path d="M256,114.005c-77.92,0-141.312,63.392-141.312,141.312S178.08,396.629,256,396.629s141.312-63.392,141.312-141.312
+                                           S333.92,114.005,256,114.005z M256,369.323c-62.863,0-114.005-51.143-114.005-114.005S193.137,141.312,256,141.312
+                                           s114.005,51.143,114.005,114.005S318.863,369.323,256,369.323z" />
+                                        </g>
+                                    </g>
+                                    <g>
+                                        <g>
+                                            <path d="M256,178.859c-42.159,0-76.459,34.299-76.459,76.459c0,42.16,34.3,76.459,76.459,76.459s76.459-34.299,76.459-76.459
+                                           C332.459,213.157,298.159,178.859,256,178.859z M256,304.469c-27.103,0-49.152-22.049-49.152-49.152s22.049-49.152,49.152-49.152
+                                           s49.152,22.049,49.152,49.152S283.103,304.469,256,304.469z" />
+                                        </g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                    <g>
+                                    </g>
+                                </svg>
                             </a>
-
-                            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" class="ml-4 -mt-px w-5 h-5 text-gray-400">
-                                <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
-                            </svg>
-
-                            <a href="https://github.com/sponsors/taylorotwell" class="ml-1 underline">
-                                Sponsor
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="ml-4 text-center text-sm text-gray-500 sm:text-right sm:ml-0">
-                        Laravel v{{ Illuminate\Foundation\Application::VERSION }} (PHP v{{ PHP_VERSION }})
+                        </button>
                     </div>
                 </div>
             </div>
+              
+                  <div class="px-6 pt-6 2xl:container">
+                      <div
+                          class="col-span-12 sm:col-span-12 md:col-span-5 lg:col-span-5 xxl:col-span-5 grid gap-6 md:grid-cols-2 lg:grid-cols-4 mb-5">
+                          <!-- Start Card List -->
+                          <div class="bg-white p-3 rounded-xl shadow-xl flex items-center justify-between mt-4">
+                              <div class="flex space-x-6 items-center">
+                                  <img src="https://cdn-icons.flaticon.com/png/512/2655/premium/2655375.png?token=exp=1654170995~hmac=112bec468153bcfbe8ec10a413f1c5e0"
+                                      class="w-auto h-12" />
+                                  <div>
+                                      <p class="font-semibold text-base">0</p>
+                                      <p class="font-semibold text-xs text-gray-400">Total Income</p>
+                                  </div>
+                              </div>
+              
+              
+                          </div>
+                          <div class="bg-white p-3 rounded-xl shadow-xl flex items-center justify-between mt-4">
+                              <div class="flex space-x-6 items-center">
+                                  <img src="https://cdn-icons-png.flaticon.com/512/2845/2845682.png" class="w-auto h-12" />
+                                  <div>
+                                      <p class="font-semibold text-base">0</p>
+                                      <p class="font-semibold text-xs text-gray-400">Total Expense</p>
+                                  </div>
+                              </div>
+              
+              
+                          </div>
+                          <div class="bg-white p-3 rounded-xl shadow-xl flex items-center justify-between mt-4">
+                              <div class="flex space-x-6 items-center">
+                                  <img src="https://cdn-icons.flaticon.com/png/512/3648/premium/3648812.png?token=exp=1654171288~hmac=dc8e50b8c0115934369e72dac42f9da8"
+                                      class="w-auto h-12" />
+                                  <div>
+                                      <p class="font-semibold text-base">0</p>
+                                      <p class="font-semibold text-xs text-gray-400">Total Balance</p>
+                                  </div>
+                              </div>
+              
+                          </div>
+                          <div class="bg-white p-3 rounded-xl shadow-xl flex items-center justify-between mt-4">
+                              <div class="flex space-x-6 items-center">
+                                  <img src="https://cdn-icons-png.flaticon.com/512/584/584052.png" class="w-auto h-12" />
+                                  <div>
+                                      <p class="font-semibold text-base">0</p>
+                                      <p class="font-semibold text-xs text-gray-400">Total Savings</p>
+                                  </div>
+                              </div>
+              
+                              <div class="flex space-x-2 items-center">
+                                  <div class="bg-yellow-200 rounded-md p-2 flex items-center">
+                                      <p class="text-yellow-600 font-semibold text-xs">new</p>
+                                  </div>
+                              </div>
+                          </div>
+              
+                          <!-- End Card List -->
+                      </div>
+              
+                      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                          <div class="md:col-span-2 lg:col-span-1">
+              
+                              <div
+                                  class="p-4 max-w-md bg-white rounded-lg border shadow-md sm:p-8 dark:bg-white  dark:border-gray-200">
+                                  <div class="flex justify-between items-center mb-4">
+                                      <h5 class="text-md font-bold leading-none text-gray-900 dark:text-gray-700">Latest transactions
+                                      </h5>
+                                      <a href="/" class="text-sm font-medium text-cyan-400 hover:underline dark:text-cyan-400">
+                                          View all
+                                      </a>
+                                  </div>
+                                  <div class="flow-root">
+                                      <ul role="list" class="divide-y divide-gray-200 dark:divide-gray-200">
+                                         
+              
+              
+                                      </ul>
+                                  </div>
+                              </div>
+              
+              
+                          </div>
+                          <!-- Start student Card -->
+                          <div>
+                              <div class="h-full py-6 px-6 rounded-xl border border-gray-200 bg-white">
+                                  <h5 class="text-md font-bold leading-none text-gray-900 dark:text-gray-700">Expense Overview</h5>
+                                  <div class="my-8">
+                                      <h1 class="text-3xl font-bold text-gray-800">64,5%</h1>
+                                      <span class="text-gray-500">Compared to last week 13,9%</span>
+                                  </div>
+                                  <svg class="w-full" viewBox="0 0 218 69" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                      <path
+                                          d="M0 67.5C27.8998 67.5 24.6002 15 52.5 15C80.3998 15 77.1002 29 105 29C132.9 29 128.6 52 156.5 52C184.4 52 189.127 63.8158 217.027 63.8158"
+                                          stroke="url(#paint0_linear_622:13664)" stroke-width="3" stroke-linecap="round" />
+                                      <path
+                                          d="M0 67.5C27.2601 67.5 30.7399 31 58 31C85.2601 31 80.7399 2 108 2C135.26 2 134.74 43 162 43C189.26 43 190.74 63.665 218 63.665"
+                                          stroke="url(#paint1_linear_622:13664)" stroke-width="3" stroke-linecap="round" />
+                                      <defs>
+                                          <linearGradient id="paint0_linear_622:13664" x1="217.027" y1="15" x2="7.91244" y2="15"
+                                              gradientUnits="userSpaceOnUse">
+                                              <stop stop-color="#4DFFDF" />
+                                              <stop offset="1" stop-color="#4DA1FF" />
+                                          </linearGradient>
+                                          <linearGradient id="paint1_linear_622:13664" x1="218" y1="18.3748" x2="5.4362" y2="18.9795"
+                                              gradientUnits="userSpaceOnUse">
+                                              <stop stop-color="#E323FF" />
+                                              <stop offset="1" stop-color="#7517F8" />
+                                          </linearGradient>
+                                      </defs>
+                                  </svg>
+                                  <table class="mt-6 -mb-2 w-full text-gray-600">
+                                      <tbody>
+                                          <tr>
+                                              <td class="py-2">This Week</td>
+                                              <td class="text-gray-500">396</td>
+                                              <td>
+                                                  <svg class="w-16 ml-auto" viewBox="0 0 68 21" fill="none"
+                                                      xmlns="http://www.w3.org/2000/svg">
+                                                      <rect opacity="0.4" width="17" height="21" rx="1" fill="#e4e4f2" />
+                                                      <rect opacity="0.4" x="19" width="14" height="21" rx="1" fill="#e4e4f2" />
+                                                      <rect opacity="0.4" x="35" width="14" height="21" rx="1" fill="#e4e4f2" />
+                                                      <rect opacity="0.4" x="51" width="17" height="21" rx="1" fill="#e4e4f2" />
+                                                      <path
+                                                          d="M0 7C8.62687 7 7.61194 16 17.7612 16C27.9104 16 25.3731 9 34 9C42.6269 9 44.5157 5 51.2537 5C57.7936 5 59.3731 14.5 68 14.5"
+                                                          stroke="url(#paint0_linear_622:13631)" stroke-width="2"
+                                                          stroke-linejoin="round" />
+                                                      <defs>
+                                                          <linearGradient id="paint0_linear_622:13631" x1="68" y1="7.74997"
+                                                              x2="1.69701" y2="8.10029" gradientUnits="userSpaceOnUse">
+                                                              <stop stop-color="#E323FF" />
+                                                              <stop offset="1" stop-color="#7517F8" />
+                                                          </linearGradient>
+                                                      </defs>
+                                                  </svg>
+                                              </td>
+                                          </tr>
+                                          <tr>
+                                              <td class="py-2">Last Week</td>
+                                              <td class="text-gray-500">120</td>
+                                              <td>
+                                                  <svg class="w-16 ml-auto" viewBox="0 0 68 21" fill="none"
+                                                      xmlns="http://www.w3.org/2000/svg">
+                                                      <rect opacity="0.4" width="17" height="21" rx="1" fill="#e4e4f2" />
+                                                      <rect opacity="0.4" x="19" width="14" height="21" rx="1" fill="#e4e4f2" />
+                                                      <rect opacity="0.4" x="35" width="14" height="21" rx="1" fill="#e4e4f2" />
+                                                      <rect opacity="0.4" x="51" width="17" height="21" rx="1" fill="#e4e4f2" />
+                                                      <path
+                                                          d="M0 12.929C8.69077 12.929 7.66833 9.47584 17.8928 9.47584C28.1172 9.47584 25.5611 15.9524 34.2519 15.9524C42.9426 15.9524 44.8455 10.929 51.6334 10.929C58.2217 10.929 59.3092 5 68 5"
+                                                          stroke="url(#paint0_linear_622:13640)" stroke-width="2"
+                                                          stroke-linejoin="round" />
+                                                      <defs>
+                                                          <linearGradient id="paint0_linear_622:13640" x1="34" y1="5" x2="34"
+                                                              y2="15.9524" gradientUnits="userSpaceOnUse">
+                                                              <stop stop-color="#8AFF6C" />
+                                                              <stop offset="1" stop-color="#02C751" />
+                                                          </linearGradient>
+                                                      </defs>
+                                                  </svg>
+                                              </td>
+                                          </tr>
+                                      </tbody>
+                                  </table>
+                              </div>
+                          </div>
+                          <div>
+              
+                              <div class="col-span-12 sm:col-span-12 md:col-span-12 lg:col-span-4 xxl:col-span-4 px-4 ">
+                                  <!-- Start wallet Card -->
+              
+              
+                                  <div class="p-4 max-w-sm bg-white rounded-lg border shadow-md sm:p-6 ">
+                                      <h5 class="mb-3 text-base font-bold text-gray-900 lg:text-md">
+                                          Connect wallet
+                                      </h5>
+                                      <ul class="my-4 space-y-3">
+                                          <li>
+                                              <a href="#"
+                                                  class="flex items-center p-3 text-base font-semibold text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-100 group hover:shadow  ">
+                                                  <img src="https://cdn-icons.flaticon.com/png/512/1390/premium/1390741.png?token=exp=1654171885~hmac=1ba3c8babc57b219a1c68d208b44f7e7"
+                                                      class=" h-5 " />
+                                                  <span class="flex-1 ml-3 whitespace-nowrap">Mpesa</span>
+                                                  <span
+                                                      class="inline-flex items-center justify-center px-2 py-0.5 ml-3 text-xs font-medium text-gray-500 bg-gray-200 rounded ">Popular</span>
+                                              </a>
+                                          </li>
+                                          <li>
+                                              <a href="#"
+                                                  class="flex items-center p-3 text-base font-semibold text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-100 group hover:shadow ">
+                                                  <img src="https://cdn-icons-png.flaticon.com/512/1086/1086741.png"
+                                                      class=" h-5 " />
+                                                  <span class="flex-1 ml-3 whitespace-nowrap">Bank</span>
+                                              </a>
+                                          </li>
+                                          <li>
+                                              <a href="#"
+                                                  class="flex items-center p-3 text-base font-semibold text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-100 group hover:shadow ">
+                                                  <img src="https://cdn-icons-png.flaticon.com/512/196/196543.png"
+                                                      class=" h-5 " />
+                                                  <span class="flex-1 ml-3 whitespace-nowrap">Bitcoin </span>
+                                              </a>
+                                          </li>
+                                          <li>
+                                              <a href="#"
+                                                  class="flex items-center p-3 text-base font-semibold text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-100 group hover:shadow ">
+                                                  <img src="https://cdn-icons-png.flaticon.com/512/6228/6228867.png"
+                                                      class=" h-5 " />
+                                                  <span class="flex-1 ml-3 whitespace-nowrap">NFT</span>
+                                              </a>
+                                          </li>
+              
+              
+              
+                                  </div>
+              
+                                  <!-- End profile Card -->
+                                  <!-- Start Card List -->
+                                  <div class="bg-white p-3 rounded-xl shadow-xl flex items-center justify-between mt-4">
+                                      <div class="flex space-x-6 items-center">
+                                          <img src="https://cdn-icons-png.flaticon.com/512/1239/1239682.png"
+                                          class=" h-24 " />
+                                          <div>
+                                              <p class="font-semibold text-base">Connect to Device</p>
+                                              <p class="font-semibold text-xs text-gray-400">Authorize the app 
+                                                  to other devices</p>
+                                          </div>
+                                      </div>
+              
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+            </main>
         </div>
-    </body>
+
+</body>
+
 </html>
 
 
