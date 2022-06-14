@@ -7,6 +7,7 @@ use App\Models\Fleet;
 use App\Models\Order;
 use App\Models\Customer;
 use Illuminate\Http\Request;
+use App\Mail\MailtrapExample;
 use App\Notifications\StatusUpdate;
 use Illuminate\Support\Facades\Mail;
 
@@ -81,12 +82,13 @@ class OrderController extends Controller
         $order->update();
 
         if ($order->wasChanged('order_status') && $order->order_status === 'dispatched') {
-           Mail::send('emails.dispatchedOrder',$order->toArray(),function($message) use ($order){
-                $message->to($order->order_customer->customer_email)->subject('Order Dispatched');
+           Mail::send('emails.dispatchedOrder',$order->toArray(),function($message){
+                $message->from('Fikisha@gmail.com', 'Admin');
+                $message->to("jeffubayi@gmail.com")->subject('Fikisha Limited');
             });
         }
 
-        return redirect('/orders')->with('message', 'Order  updated successfully');
+        return redirect('/')->with('message', 'Order  updated successfully');
     }
 
     public function destroy($id)

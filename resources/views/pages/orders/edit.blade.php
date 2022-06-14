@@ -14,11 +14,12 @@
                     <input type="hidden" name="order_id" value="{{ $order->id }}">
                     <label for="confirm_password" class="block mb-2 text-sm font-medium text-gray-900 ">
                         Customer</label>
-                    <select id="countries" name="order_customer"
+                        <select id="countries" name="order_customer"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                        <option value="{{ $order->order_customer }}" selected>{{ $order->order_customer }}</option>
                         @foreach ($customers as $customer)
-                            <option value="{{ $customer->id }}">{{ $customer->customer_name }}</option>
+                            <option value="{{ $customer->id }}"
+                                {{ $order->order_customer == $customer->id ? 'selected' : '' }}>
+                                {{ $customer->customer_name }}</option>
                         @endforeach
                     </select>
                     @error('order_customer')
@@ -28,11 +29,15 @@
                 <div class="mb-6">
                     <label for="confirm_password" class="block mb-2 text-sm font-medium text-gray-900 ">
                         Fleet</label>
-                    <select id="countries" name="order_fleet"
+                        <select id="countries" name="order_fleet"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                        <option value="{{ $order->order_fleet }}" selected>{{ $order->order_fleet }}</option>
+                        <option value="{{ $order->order_fleet }}" selected>{{ $order->order_fleet }}
+                        </option>
                         @foreach ($fleets as $fleet)
-                            <option value="{{ $fleet->id }}">{{ $fleet->fleet_name }}</option>
+                            <option value="{{ $fleet->id }}"
+                                {{ $order->order_fleet == $fleet->id  ? 'selected' : '' }}>
+                                {{ $fleet->fleet_name }}
+                            </option> 
                         @endforeach
                     </select>
                     @error('order_fleet')
@@ -69,7 +74,7 @@
                 <button type="submit"
                     class="text-white  bg-blue-600    hover:bg-blue-500  focus:ring-4 focus:outline-none focus:ring-cyan-500  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Save</button>
 
-                <a href="{{ route('orders.index') }}"
+                <a href="/"
                     class="text-blue-600  bg-white     border border-blue-700  focus:ring-4 focus:outline-none focus:ring-blue-600  font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center">Cancel</a>
             </form>
         </div>

@@ -43,11 +43,12 @@ Route::post('/customer/update', 'CustomerController@update')->name('customers.up
 Route::get('/customer/delete/{id}', 'CustomerController@destroy')->name('customers.delete');
 
 //email notification
-Route::get('/send-mail', function () {
+Route::get('/send-email', function () {
 
-    Mail::to('newuser@example.com')->send(new MailtrapExample());
+    Mail::to('jeffubayi@gmail.com')->send(new MailtrapExample());
 
     return 'A message has been sent to Fikisha!';
+
 
 });
 

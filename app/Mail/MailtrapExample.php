@@ -1,12 +1,16 @@
 <?php
+
 namespace App\Mail;
+
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
+
 class MailtrapExample extends Mailable
 {
     use Queueable, SerializesModels;
+
     /**
      * Create a new message instance.
      *
@@ -16,23 +20,16 @@ class MailtrapExample extends Mailable
     {
         //
     }
+
     /**
      * Build the message.
      *
      * @return $this
      */
-public function build()
+    public function build()
     {
-        return $this->from('mail@example.com', 'Mailtrap')
-            ->subject('Mailtrap Confirmation')
-            ->markdown('emails.dispatchedOrder')
-            ->with([
-                'name' => 'New Mailtrap User',
-                'link' => '/inboxes/'
-            ]);
+        return $this->subject('Fikisha Limited')->view('emails.dispatchedOrder');
     }
-
-
 }
 
 
