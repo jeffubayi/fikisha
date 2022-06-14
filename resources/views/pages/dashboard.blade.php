@@ -15,7 +15,7 @@ $mytime = Carbon\Carbon::now();
     @endif
 
     <div class="px-6 pt-6 2xl:container">
-        <p class="font-semibold text-md  text-gray-600">{{ $mytime->format('Y-m-d') }}</p>
+        <p class="font-semibold text-md  text-gray-600">{{ $mytime->format('D M Y ') }}</p>
         <div
             class="col-span-12 sm:col-span-12 md:col-span-5 lg:col-span-5 xxl:col-span-5 grid gap-6 md:grid-cols-2 lg:grid-cols-4 mb-5">
             <!-- Start Card List -->
