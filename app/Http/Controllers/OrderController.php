@@ -49,7 +49,6 @@ class OrderController extends Controller
         $orders->order_customer = $request->order_customer;
         $orders->order_fleet = $request->order_fleet;
         $orders->order_status = $request->order_status;
-        $orders->order_status = wasChanged($request->order_status);
         $orders->order_date = $request->order_date;
         $orders->user_id = Auth::user()->id;
         $orders->save();
