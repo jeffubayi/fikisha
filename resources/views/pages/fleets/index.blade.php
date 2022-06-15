@@ -31,6 +31,9 @@
                         <th scope="col" class="px-6 py-3">
                             <span class="sr-only">Edit</span>
                         </th>
+                        <th scope="col" class="px-6 py-3">
+                            <span class="sr-only">Delete</span>
+                        </th>
                     </tr>
                 </thead>
                 @foreach ($fleets as $fleet)
@@ -48,20 +51,24 @@
                             </td>
                             <td class="px-6 py-4">
                                 <span
-                                class="px-2 py-1 font-semibold leading-tight {{ $fleet->fleet_status == 'available' ? 'text-green-700 bg-green-100' : 'text-yellow-700 bg-yellow-100' }} rounded-full ">
-                            {{ $fleet->fleet_status }}
-                            </span>
-                                
+                                    class="px-2 py-1 font-semibold leading-tight {{ $fleet->fleet_status == 'available' ? 'text-green-700 bg-green-100' : 'text-yellow-700 bg-yellow-100' }} rounded-full ">
+                                    {{ $fleet->fleet_status }}
+                                </span>
+
                             </td>
                             <td class="px-6 py-4 text-right">
                                 <a href="{{ route('fleets.edit', $fleet->id) }}"
                                     class="font-medium text-blue-600 ">Edit</a>
                             </td>
+                            <td class="px-6 py-4 text-right">
+                                <a href="{{ route('fleets.delete', $fleet->id) }}"
+                                    class="font-medium text-red-600 ">Delete</a>
+                            </td>
                         </tr>
 
                     </tbody>
                 @endforeach
-               
+
             </table>
             <div class="col-xl-12 col-sm-12">
                 {{ $fleets->links() }}

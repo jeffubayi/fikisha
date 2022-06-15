@@ -6,7 +6,7 @@
             <div class="px-4 py-3 flex items-center space-x-4 rounded-md text-gray-600 group">
             </div>
         </div>
-    
+
         <div class="max-w-2xl mx-auto bg-white rounded-lg  p-16">
             <form action="{{ route('customers.update') }}" method="POST">
                 @csrf

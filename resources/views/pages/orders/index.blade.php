@@ -16,23 +16,23 @@
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
                     <tr>
                         <th scope="col" class="px-6 py-3">
-                            {{-- @foreach ($customers as $cust)
-                            {{ $cust->customer_name }}
-                            @endforeach --}}
                             id
                         </th>
                         <th scope="col" class="px-6 py-3 ">
-                            Customer Name
+                            Customer Contact
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Fleet Plate
+                            Fleet 
                         </th>
 
                         <th scope="col" class="px-6 py-3">
-                            Order Status
+                             Status
                         </th>
                         <th scope="col" class="px-6 py-3">
                             <span class="sr-only">Edit</span>
+                        </th>
+                        <th scope="col" class="px-6 py-3">
+                            <span class="sr-only">Delete</span>
                         </th>
                     </tr>
                 </thead>
@@ -58,13 +58,12 @@
                                 <td class="px-6 py-4">
                                     <select id="countries" name="order_fleet"
                                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                                        <option value="{{ $order->order_fleet }}" selected>{{ $order->order_fleet }}
-                                        </option>
+                                      
                                         @foreach ($fleets as $fleet)
                                             <option value="{{ $fleet->id }}"
-                                                {{ $order->order_fleet == $fleet->id  ? 'selected' : '' }}>
+                                                {{ $order->order_fleet == $fleet->id ? 'selected' : '' }}>
                                                 {{ $fleet->fleet_name }}
-                                            </option> 
+                                            </option>
                                         @endforeach
                                     </select>
                                 </td>
@@ -85,6 +84,10 @@
                                 <td class="px-6 py-4 text-right">
                                     <a href="{{ route('orders.edit', $order->id) }}"
                                         class="font-medium text-blue-600 ">Edit</a>
+                                </td>
+                                <td class="px-6 py-4 text-right">
+                                    <a href="{{ route('orders.delete', $fleet->id) }}"
+                                        class="font-medium text-red-600 ">Delete</a>
                                 </td>
                             </form>
                         </tr>

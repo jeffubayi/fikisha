@@ -81,8 +81,8 @@ $mytime = Carbon\Carbon::now();
                                 <th class="px-4 py-3">Customers</th>
                                 <th class="px-4 py-3">Fleet</th>
                                 <th class="px-4 py-3">Status</th>
-                                <th  class="px-4 py-3 invisible lg:visible">Delivery Date</th>
-                                <th   class="px-4 py-3 invisible lg:visible "></th>
+                                <th class="px-4 py-3 invisible lg:visible">Delivery Date</th>
+                                <th class="px-4 py-3 invisible lg:visible "></th>
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y ">
@@ -126,22 +126,22 @@ $mytime = Carbon\Carbon::now();
                                         </select>
                                     </td>
                                     <td class="px-4 py-3 text-xs">
-                                        @if ($order->order_status == "pending")
+                                        @if ($order->order_status == 'pending')
                                             <span
                                                 class="px-2 py-1 font-semibold leading-tight text-orange-700 bg-orange-100 rounded-full ">
                                                 {{ $order->order_status }}
                                             </span>
-                                        @elseif($order->order_status == "loading")
+                                        @elseif($order->order_status == 'loading')
                                             <span
                                                 class="px-2 py-1 font-semibold leading-tight text-yellow-700 bg-yellow-100 rounded-full ">
                                                 {{ $order->order_status }}
                                             </span>
-                                        @elseif($order->order_status == "delivered")
+                                        @elseif($order->order_status == 'delivered')
                                             <span
                                                 class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full ">
                                                 {{ $order->order_status }}
                                             </span>
-                                            @elseif($order->order_status == "dispatched")
+                                        @elseif($order->order_status == 'dispatched')
                                             <span
                                                 class="px-2 py-1 font-semibold leading-tight text-blue-700 bg-blue-100 rounded-full ">
                                                 {{ $order->order_status }}
@@ -149,12 +149,12 @@ $mytime = Carbon\Carbon::now();
                                         @endif
 
                                     </td>
-                                    <td  class="px-4 py-3 text-sm invisible lg:visible">
+                                    <td class="px-4 py-3 text-sm invisible lg:visible">
                                         {{ $order->order_date }}
                                     </td>
                                     <td class="px-6 py-4 text-right invisible lg:visible ">
                                         <a href="{{ route('orders.edit', $order->id) }}"
-                                            class="text-blue-600  bg-white    rounded-lg text-sm w-full sm:w-auto px-2 py-2 text-center">edit</a>
+                                            class="text-blue-600  bg-white    rounded-lg text-sm w-full sm:w-auto px-2 py-2 text-center">Edit</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -168,7 +168,7 @@ $mytime = Carbon\Carbon::now();
                         View All
                     </span>
                     <span class="col-span-2"></span>
-                    
+
                 </div>
             </div>
         </div>

@@ -32,6 +32,9 @@
                         <th scope="col" class="px-6 py-3">
                             <span class="sr-only">Edit</span>
                         </th>
+                        <th scope="col" class="px-6 py-3">
+                            <span class="sr-only">Delete</span>
+                        </th>
                     </tr>
                 </thead>
                 @foreach ($customers as $customer)
@@ -54,6 +57,10 @@
                             <td class="px-6 py-4 text-right">
                                 <a href="{{ route('customers.edit', $customer->id) }}"
                                     class="font-medium text-blue-600 ">Edit</a>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                                <a href="{{ route('customers.delete', $customer->id) }}"
+                                    class="font-medium text-red-600 ">Delete</a>
                             </td>
                         </tr>
 

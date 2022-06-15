@@ -14,7 +14,7 @@
                     <input type="hidden" name="order_id" value="{{ $order->id }}">
                     <label for="confirm_password" class="block mb-2 text-sm font-medium text-gray-900 ">
                         Customer</label>
-                        <select id="countries" name="order_customer"
+                    <select id="countries" name="order_customer"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         @foreach ($customers as $customer)
                             <option value="{{ $customer->id }}"
@@ -29,15 +29,14 @@
                 <div class="mb-6">
                     <label for="confirm_password" class="block mb-2 text-sm font-medium text-gray-900 ">
                         Fleet</label>
-                        <select id="countries" name="order_fleet"
+                    <select id="countries" name="order_fleet"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         <option value="{{ $order->order_fleet }}" selected>{{ $order->order_fleet }}
                         </option>
                         @foreach ($fleets as $fleet)
-                            <option value="{{ $fleet->id }}"
-                                {{ $order->order_fleet == $fleet->id  ? 'selected' : '' }}>
+                            <option value="{{ $fleet->id }}" {{ $order->order_fleet == $fleet->id ? 'selected' : '' }}>
                                 {{ $fleet->fleet_name }}
-                            </option> 
+                            </option>
                         @endforeach
                     </select>
                     @error('order_fleet')

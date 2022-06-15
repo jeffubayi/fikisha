@@ -24,7 +24,7 @@
                 <div class="grid gap-6 mb-6 lg:grid-cols-2">
                     <div>
                         <label for="fleet_name" class="block mb-2 text-sm font-medium text-gray-900 ">
-                           Number Plate</label>
+                            Number Plate</label>
                         <input type="text" name="fleet_plate" id="company"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                         @error('fleet_plate')
@@ -34,7 +34,7 @@
                     <div>
                         <label for="title" class="block mb-2 text-sm font-medium text-gray-900 ">
                             Status</label>
-                            <select id="countries" name="fleet_status"
+                        <select id="countries" name="fleet_status"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                             <option value='available'>Available</option>
                             <option value='loading'>Loading</option>
