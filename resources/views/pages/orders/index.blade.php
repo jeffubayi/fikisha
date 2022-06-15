@@ -86,7 +86,7 @@
                                         class="font-medium text-blue-600 ">Edit</a>
                                 </td>
                                 <td class="px-6 py-4 text-right">
-                                    <a href="{{ route('orders.delete', $fleet->id) }}"
+                                    <a href="{{ route('orders.delete', $order->id) }}"
                                         class="font-medium text-red-600 ">Delete</a>
                                 </td>
                             </form>

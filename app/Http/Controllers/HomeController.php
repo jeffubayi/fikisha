@@ -24,12 +24,16 @@ class HomeController extends Controller
     public function index()
     {
 
-        $data['orders']= Order::where('user_id', Auth::User()->id)->latest()->paginate(6);
+        $data['orders']= Order::where('user_id', Auth::User()->id)->latest()->paginate(5);
         $data['fleets'] = Fleet::where('user_id', Auth::User()->id)->latest()->paginate(10);
         $data['customers'] = Customer::where('user_id', Auth::User()->id)->latest()->paginate(10);
         $data['customerCount'] =  Customer::where('user_id', Auth::User()->id)->count();
         $data['orderCount'] =  Order::where('user_id', Auth::User()->id)->count();
         $data['fleetCount'] =  Fleet::where('user_id', Auth::User()->id)->count();
+        $data['pendingCount'] =  Order::where('order_status' , 'pending')->count();
+        $data['loadingCount'] =  Order::where('order_status' , 'loading')->count();
+        $data['dispatchedCount'] =  Order::where('order_status' , 'dispatched')->count();
+        $data['deliveredCount'] = Order::where('order_status' , 'delivered')->count();
         $data['availableFleetCount'] =  Fleet::where('fleet_status' , 'available')->count();
 
         return view('pages.dashboard', $data);
