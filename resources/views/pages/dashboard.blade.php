@@ -176,7 +176,7 @@ $mytime = Carbon\Carbon::now();
             </div>
 
 
-            <div class="   sm:col-span-3 md:col-span-3 ">
+            <div class="  ">
                 <div class="p-4  bg-white rounded-lg border shadow-md sm:p-6 ">
                     <h5 class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase"> Order status
                     </h5>
