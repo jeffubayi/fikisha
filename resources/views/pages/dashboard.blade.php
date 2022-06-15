@@ -55,7 +55,7 @@ $mytime = Carbon\Carbon::now();
 
         <div class="grid grid-cols-3 gap-4 ">
             <!-- Start Card List -->
-            <div class="  lg:col-span-2  ">
+            <div class="  col-span-3 lg:col-span-2  ">
 
 
                 <div class=" sm:col-span-12 md:col-span-5  overflow-hidden rounded-lg shadow-xl">
