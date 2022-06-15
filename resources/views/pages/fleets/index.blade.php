@@ -36,6 +36,7 @@
                         </th>
                     </tr>
                 </thead>
+                @unless(count($fleets) == 0)
                 @foreach ($fleets as $fleet)
                     <tbody>
                         <tr class="bg-white border-b ">
@@ -68,7 +69,11 @@
 
                     </tbody>
                 @endforeach
-
+                @else
+                <div class="flex justify-center">
+                    <h1>No Fleets</h1>
+                </div>
+        @endunless
             </table>
             <div class="col-xl-12 col-sm-12">
                 {{ $fleets->links() }}

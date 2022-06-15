@@ -36,6 +36,7 @@
                         </th>
                     </tr>
                 </thead>
+                @unless(count($orders) == 0)
                 @foreach ($orders as $order)
                     <tbody>
                         <tr class="bg-white border-b ">
@@ -94,6 +95,11 @@
 
                     </tbody>
                 @endforeach
+                @else
+                    <div class="flex justify-center">
+                        <h1>No Orders</h1>
+                    </div>
+            @endunless
 
             </table>
             <div class="col-xl-12 col-sm-12">

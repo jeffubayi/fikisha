@@ -37,6 +37,7 @@
                         </th>
                     </tr>
                 </thead>
+                @unless(count($customers) == 0)
                 @foreach ($customers as $customer)
                     <tbody>
                         <tr class="bg-white border-b ">
@@ -66,6 +67,11 @@
 
                     </tbody>
                 @endforeach
+                @else
+                <div class="flex justify-center">
+                    <h1>No Customers</h1>
+                </div>
+        @endunless
             </table>
             <div class="col-xl-12 col-sm-12">
                 {{ $customers->links() }}
