@@ -53,7 +53,7 @@ $mytime = Carbon\Carbon::now();
             <!-- End Card List -->
         </div>
 
-        <div class="grid grid-cols-3 gap-4">
+        <div class="grid grid-cols-3 gap-4  sm:grid-cols-2">
             <!-- Start Card List -->
             <div class="  col-span-2 ">
 
