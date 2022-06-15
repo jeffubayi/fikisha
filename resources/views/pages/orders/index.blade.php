@@ -22,11 +22,11 @@
                             Customer Contact
                         </th>
                         <th scope="col" class="px-6 py-3">
-                            Fleet 
+                            Fleet
                         </th>
 
                         <th scope="col" class="px-6 py-3">
-                             Status
+                            Status
                         </th>
                         <th scope="col" class="px-6 py-3">
                             <span class="sr-only">Edit</span>
@@ -36,70 +36,71 @@
                         </th>
                     </tr>
                 </thead>
-                @unless(count($orders) == 0)
-                @foreach ($orders as $order)
-                    <tbody>
-                        <tr class="bg-white border-b ">
-                            <td class="px-6 py-4">
-                                {{ $order->id }}
-                            </td>
-                            <form action="{{ route('orders.update') }}" method="POST">
-                                @csrf
-                                <td class="px-6 py-4 font-medium ">
 
-                                    <select id="countries" name="order_customer"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                                        @foreach ($customers as $customer)
-                                            <option value="{{ $customer->id }}"
-                                                {{ $order->order_customer == $customer->id ? 'selected' : '' }}>
-                                                {{ $customer->customer_email }}</option>
-                                        @endforeach
-                                    </select>
-                                </td>
+                <tbody>
+                    @unless(count($orders) == 0)
+                        @foreach ($orders as $order)
+                            <tr class="bg-white border-b ">
                                 <td class="px-6 py-4">
-                                    <select id="countries" name="order_fleet"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                                      
-                                        @foreach ($fleets as $fleet)
-                                            <option value="{{ $fleet->id }}"
-                                                {{ $order->order_fleet == $fleet->id ? 'selected' : '' }}>
-                                                {{ $fleet->fleet_name }}
-                                            </option>
-                                        @endforeach
-                                    </select>
+                                    {{ $order->id }}
                                 </td>
-                                <td class="px-6 py-4">
-                                    <select id="countries" name="order_status"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
-                                        <option value="{{ $order->order_status }}"
-                                            class="selected px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">
-                                            {{ $order->order_status }}</option>
-                                        <option value='pending'>Pending</option>
-                                        <option value='loading'>Loading</option>
-                                        <option value='dispatched'>Dispatched</option>
-                                        <option value='delivered'>Delivered</option>
+                                <form action="{{ route('orders.update') }}" method="POST">
+                                    @csrf
+                                    <td class="px-6 py-4 font-medium ">
 
-                                    </select>
+                                        <select id="countries" name="order_customer"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                                            @foreach ($customers as $customer)
+                                                <option value="{{ $customer->id }}"
+                                                    {{ $order->order_customer == $customer->id ? 'selected' : '' }}>
+                                                    {{ $customer->customer_email }}</option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <select id="countries" name="order_fleet"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
 
-                                </td>
-                                <td class="px-6 py-4 text-right">
-                                    <a href="{{ route('orders.edit', $order->id) }}"
-                                        class="font-medium text-blue-600 ">Edit</a>
-                                </td>
-                                <td class="px-6 py-4 text-right">
-                                    <a href="{{ route('orders.delete', $order->id) }}"
-                                        class="font-medium text-red-600 ">Delete</a>
-                                </td>
-                            </form>
-                        </tr>
+                                            @foreach ($fleets as $fleet)
+                                                <option value="{{ $fleet->id }}"
+                                                    {{ $order->order_fleet == $fleet->id ? 'selected' : '' }}>
+                                                    {{ $fleet->fleet_name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <select id="countries" name="order_status"
+                                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
+                                            <option value="{{ $order->order_status }}"
+                                                class="selected px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-full">
+                                                {{ $order->order_status }}</option>
+                                            <option value='pending'>Pending</option>
+                                            <option value='loading'>Loading</option>
+                                            <option value='dispatched'>Dispatched</option>
+                                            <option value='delivered'>Delivered</option>
 
-                    </tbody>
-                @endforeach
-                @else
-                    <div class="flex justify-center">
-                        <h1>No Orders</h1>
-                    </div>
-            @endunless
+                                        </select>
+
+                                    </td>
+                                    <td class="px-6 py-4 text-right">
+                                        <a href="{{ route('orders.edit', $order->id) }}"
+                                            class="font-medium text-blue-600 ">Edit</a>
+                                    </td>
+                                    <td class="px-6 py-4 text-right">
+                                        <a href="{{ route('orders.delete', $order->id) }}"
+                                            class="font-medium text-red-600 ">Delete</a>
+                                    </td>
+                                </form>
+                            </tr>
+                        @endforeach
+                    @else
+                        <div class="flex justify-center">
+                            <h1>No Orders</h1>
+                        </div>
+                    @endunless
+                </tbody>
+
 
             </table>
             <div class="col-xl-12 col-sm-12">

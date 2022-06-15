@@ -149,8 +149,10 @@ $mytime = Carbon\Carbon::now();
                                         </tr>
                                     @endforeach
                                 @else
+                                <div class=" flex  justify-center">
                                     <img src="https://cdn-icons-png.flaticon.com/512/1001/1001044.png"
-                                        class="w-auto h-20 flex justify-center p-5" alt="no data" />
+                                        class="w-auto h-20 p-5" alt="no data" />
+                                    </div>
                                 @endunless
                             </tbody>
 
