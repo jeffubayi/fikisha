@@ -55,7 +55,7 @@ $mytime = Carbon\Carbon::now();
 
         <div class="grid grid-cols-3 gap-4 ">
             <!-- Start Card List -->
-            <div class="  col-span-2 ">
+            <div class="  lg:col-span-2  ">
 
 
                 <div class=" sm:col-span-12 md:col-span-5  overflow-hidden rounded-lg shadow-xl">
@@ -176,7 +176,7 @@ $mytime = Carbon\Carbon::now();
             </div>
 
 
-            <div class=" invisible lg:visible ">
+            <div class="  ">
                 <div class="p-4 max-w-sm bg-white rounded-lg border shadow-md sm:p-6 ">
                     <h5 class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase"> Order status
                     </h5>
